@@ -18,3 +18,15 @@ services:
       - ASPNETCORE_URLS=http://*:5000
     ports:
       - "5000:5000"
+  globoseq:
+    image: datalust/seq
+    restart: unless-stopped
+    environment: 
+      - ACCEPT_EULA=Y
+    ports:
+      - "5342:80"
+  globosmtp:
+    image: rnwood/smtp4dev
+    restart: always
+    ports:
+      - "5010:80"
