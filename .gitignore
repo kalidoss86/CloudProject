@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/docker-k8s-fundamentals/obj/Debug
+/docker-k8s-fundamentals/obj/Docker/obj/Docker
+/docker-k8s-fundamentals/obj/Docker
+/docker-k8s-fundamentals/bin/Debug
