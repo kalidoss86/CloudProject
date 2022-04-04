@@ -115,8 +115,17 @@ namespace Globomantics.Core
         {
             app.UseExceptionHandler("/Error");
 
-            app.UseHsts();
-            app.UseHttpsRedirection();
+            var forwardedHeaderOptions = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+            };
+
+            forwardedHeaderOptions.KnownNetworks.Clear();
+            forwardedHeaderOptions.KnownProxies.Clear();
+            app.UseForwardedHeaders(forwardedHeaderOptions);
+
+            //app.UseHsts();
+            //app.UseHttpsRedirection();
 
             app.UseStaticFiles();
             app.UseSerilogRequestLogging(opts =>
